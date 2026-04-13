@@ -48,7 +48,7 @@ package com.mycompany.quickchat;
 		
 	}
 	
-        //
+        //The correct output to receive if the inputs are incorrect
 	public static String registeredUser(String namesurname,String userName,String passWord,String cellPhone)  {
 		String errorMessages = "";
 		if(!checkUserName(userName)) {
@@ -70,7 +70,7 @@ package com.mycompany.quickchat;
 		}
 		
 		
-	
+	//The correct outputs if the input is correct 
 	
 	String successMessages = "";
 	successMessages += "Username successfully captured\n";
@@ -106,7 +106,7 @@ package com.mycompany.quickchat;
 	
 	public	static String returnLoginStatus(boolean isLoggedIn)  {
 			
-                    //Checking if the user is the real one and welcoming them
+                    //Checking if the user is the real one and welcoming them if they are 
 			if(isLoggedIn)  {
 				
 				String nameSurname = registeredUser.nameSurname != null  ?registeredUser.nameSurname  : "";
