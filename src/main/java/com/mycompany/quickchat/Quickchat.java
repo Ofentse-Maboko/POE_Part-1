@@ -13,10 +13,10 @@ import java.util.Scanner;
 public class Quickchat {
     public static void main(String[] args) {
 
-              //  Allows program to take data from the user
+
 		Scanner user = new Scanner(System.in);
 
-                //this is written so that the code can be called in the console
+                //this is written so that the code can be called ii the console
 		System.out.println("\n======Menu======");
 		
 		System.out.println("Enter NAME and Surname");
@@ -40,7 +40,6 @@ public class Quickchat {
 			return;
 			
 		}
-                //This allows the questions to be printed in the console
 		System.out.println("Enter username");
 		String LoginUsername = user.next();
 		
