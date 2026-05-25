@@ -12,12 +12,14 @@ package com.mycompany.quickchat;
     static User2 registeredUser = new User2();
 	    
 	public static boolean checkUserName(String userName) {
-		return (userName.length()  <=5  || !userName.contains("_"));
-			
+
+        return userName.length() >= 5
+            && userName.contains("_");
+
 	}
         
         // checking if the password is less than 8 characters if not its wrong
-	public static boolean checkPasswordComplexity(String passWord)   {
+    public static boolean checkPasswordComplexity(String passWord)   {
 		
 		if(passWord.length()   <  8) 
 			return false;
@@ -48,19 +50,23 @@ package com.mycompany.quickchat;
 		
 	}
 	
-        //
+        //If information entered is incorrect ,the following will be printed out  
 	public static String registeredUser(String namesurname,String userName,String passWord,String cellPhone)  {
 		String errorMessages = "";
 		if(!checkUserName(userName)) {
-			errorMessages += "Username is not correctly formatted:  Please ensure that your Username contains an underscore ";
+			errorMessages += "Username is not correctly formatted:"  +"Please ensure that your Username contains an underscore.\n";
 			
+                        
 		}
 		if(!checkPasswordComplexity(passWord)) {
-			errorMessages += "Password is not correctly formatted:  Please ensure that your password is atleast five characters long ";
+			errorMessages +=
+                                        "Password is not correctly formatted: "
+                                        + "Please ensure that your password contains at least 8 characters, "
+                                        + "a capital letter, a number, and a special character.\n";
 		
 	}
 		if(!checkCellPhoneNumber(cellPhone)) {
-			errorMessages += "CellPhone number is not correctly formatted:  Please ensure that your Number contains +27 and is 12 numbers long ";
+			errorMessages += "CellPhone number is not correctly formatted: "+" Please ensure that your Number contains +27 and is 12 numbers long.\n ";
 	
 	
 		}
@@ -71,13 +77,13 @@ package com.mycompany.quickchat;
 		
 		
 	
-	
+	//When correct inputs are inserted ,these are the messages that will be printed
 	String successMessages = "";
 	successMessages += "Username successfully captured\n";
 	successMessages += "Password successfully captured\n";
 	successMessages += "Cellphone successfully captured\n";
-	successMessages += "CellPhone Number successfully captured\n";
-	successMessages += "Welcome"  + namesurname +"   "+ "A pleasure to meet your aquantance.";
+//	successMessages += "CellPhone Number successfully captured\n";
+	successMessages += "Welcome "  + namesurname +"   "+ " A pleasure to meet your acquaintance.";
 	
 	registeredUser.userName = userName;
 	registeredUser.passWord = passWord;
