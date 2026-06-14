@@ -14,3 +14,59 @@
 "messageHash": "67:1:EMPTY"
 }
 
+{
+"messageID": "2368386072",
+"messageNumber": "1",
+"recipient": "+27567890987",
+"messageText": "i love u",
+"messageHash": "23:1:IU"
+}
+
+{
+"messageID": "6038325451",
+"messageNumber": "1",
+"recipient": "+27888888888",
+"messageText": "hi there",
+"messageHash": "60:1:HITHERE"
+}
+
+{
+"messageID": "2386560466",
+"messageNumber": "1",
+"recipient": "+27333333333",
+"messageText": "hi there",
+"messageHash": "23:1:HITHERE"
+}
+
+{
+"messageID": "2170759141",
+"messageNumber": "1",
+"recipient": "+27888888888",
+"messageText": "hi thre lady",
+"messageHash": "21:1:HILADY"
+}
+
+{
+"messageID": "2256807068",
+"messageNumber": "1",
+"recipient": "+27344444444",
+"messageText": "hi there frank",
+"messageHash": "22:1:HIFRANK"
+}
+
+{
+"messageID": "1874252669",
+"messageNumber": "1",
+"recipient": "+27888888888",
+"messageText": "hi,there buddy",
+"messageHash": "18:1:HI,THEREBUDDY"
+}
+
+{
+"messageID": "8820981471",
+"messageNumber": "1",
+"recipient": "+27888888888",
+"messageText": "hi thre bru",
+"messageHash": "88:1:HI:BRU"
+}
+

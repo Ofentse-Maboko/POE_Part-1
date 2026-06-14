@@ -44,7 +44,7 @@ public class Quickchat {
         if (outputmessages.contains("not correctly formatted")) {
 
             System.out.println(
-                    "Please make sure everything is correct."
+                    "Please try again and  make sure everything is correct."
             );
 
             return;
@@ -83,108 +83,175 @@ public class Quickchat {
 
             do {
 
-                // Main menu
-                System.out.println("\n====== QUICKCHAT MENU ======");
-                System.out.println("1. Send Messages");
+    // Main menu
+    System.out.println("\n====== QUICKCHAT MENU ======");
+    System.out.println("1. Send Messages");
+    System.out.println("2. Show recently sent messages");
+    System.out.println("3. Display longest message");
+    System.out.println("4. Search by recipient");
+    System.out.println("5. Search by message ID");
+    System.out.println("6. Delete message using hash");
+    System.out.println("7. Read stored messages");
+    System.out.println("8. Quit");
+
+    System.out.println("Choose option:");
+    option = user.nextInt();
+    user.nextLine();
+
+    switch (option) {
+
+        case 1:
+
+            // Limit number of messages
+            if (messagesSent >= maxMessages) {
+
                 System.out.println(
-                        "2. Show recently sent messages"
+                        "You have reached your message limit."
                 );
-                System.out.println("3. Quit");
 
-                System.out.println("Choose option:");
-                option = user.nextInt();
-                user.nextLine();
+                break;
+            }
 
-                switch (option) {
+            // Capture message
+            System.out.println("\nEnter recipient number:");
+            String recipient = user.nextLine();
 
-                    case 1:
+            System.out.println("Enter your message:");
+            String text = user.nextLine();
 
-                        // Limit number of messages
-                        if (messagesSent >= maxMessages) {
+            // Create message object
+            Message msg = new Message(
+                    messagesSent + 1,
+                    recipient,
+                    text
+            );
 
-                            System.out.println(
-                                    "You have reached "
-                                    + "your message limit."
-                            );
+            // Validate recipient
+            System.out.println(
+                    msg.checkRecipientCell()
+            );
 
-                            break;
-                        }
+            // Validate message length
+            if (msg.checkMessageLength()) {
 
-                        // Capture message
-                        System.out.println(
-                                "\nEnter recipient number:"
-                        );
+                System.out.println(
+                        msg.printMessage()
+                );
 
-                        String recipient = user.nextLine();
+                String result = msg.sentMessage();
 
-                        System.out.println(
-                                "Enter your message:"
-                        );
+                System.out.println(result);
 
-                        String text = user.nextLine();
+                if (result.contains(
+                        "successfully sent")) {
 
-                        // Create message object
-                        Message msg = new Message(
-                                messagesSent + 1,
-                                recipient,
-                                text
-                        );
+                    messagesSent++;
 
-                        // Validate recipient
-                        System.out.println(
-                                msg.checkRecipientCell()
-                        );
-
-                        // Validate message length
-                        if (msg.checkMessageLength()) {
-
-                            // Print message details
-                            System.out.println(
-                                    msg.printMessage()
-                            );
-
-                            // Send/store/delete message
-                            String result = msg.sentMessage();
-
-                            System.out.println(result);
-
-                            // Count sent messages
-                            if (result.contains(
-                                    "successfully sent")) {
-
-                                messagesSent++;
-
-                                System.out.println(
-                                        "Total messages sent: "
-                                        + Message.returnTotalMessages()
-                                );
-                            }
-                        }
-
-                        break;
-
-                    case 2:
-
-                        System.out.println("Coming Soon.");
-
-                        break;
-
-                    case 3:
-
-                        System.out.println(
-                                "Thank you for using QuickChat."
-                        );
-
-                        break;
-
-                    default:
-
-                        System.out.println(
-                                "Invalid option."
-                        );
+                    System.out.println(
+                            "Total messages sent: "
+                            + Message.returnTotalMessages()
+                    );
                 }
+            }
 
-            } while (option != 3);
+            break;
+
+        case 2:
+
+            System.out.println(
+                    "\nRecently Sent Messages:"
+            );
+
+            String[] messages =
+                    Message.getSentMessages();
+
+            for (String message : messages) {
+
+                if (message != null) {
+
+                    System.out.println(message);
+                }
+            }
+            break;
+        case 3:
+
+            System.out.println(
+                    "\nLongest Message:"
+            );
+
+            System.out.println(
+                    Message.displayLongestMessage()
+            );
+
+            break;
+
+        case 4:
+
+            System.out.println(
+                    "Enter recipient number:"
+            );
+
+            String recipientSearch =
+                    user.nextLine();
+
+            System.out.println(
+                    Message.searchByRecipient(
+                            recipientSearch
+                    )
+            );
+
+            break;
+        case 5:
+
+            System.out.println(
+                    "Enter message ID:"
+            );
+            String id =
+                    user.nextLine();
+
+            System.out.println(
+                    Message.searchMessageByID(id)
+            );
+
+            break;
+
+        case 6:
+
+            System.out.println(
+                    "Enter message hash:"
+            );
+
+            String hash =
+                    user.nextLine();
+
+            System.out.println(
+                    Message.deleteMessage(hash)
+            );
+
+            break;
+
+        case 7:
+
+            Message.readStoredMessages();
+
+            break;
+
+        case 8:
+
+            System.out.println(
+                    "Thank you for using QuickChat."
+            );
+
+            break;
+
+        default:
+
+            System.out.println(
+                    "Invalid option."
+            );
+    }
+
+} while (option != 8);
 
         } else {
 

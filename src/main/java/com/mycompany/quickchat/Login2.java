@@ -8,6 +8,8 @@ package com.mycompany.quickchat;
  *
  * @author matom
  */
+
+
     public class Login2 {
     static User2 registeredUser = new User2();
 	    
